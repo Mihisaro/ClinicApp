@@ -1,0 +1,93 @@
+﻿<Window x:Class="ClinicApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ClinicApp - Регистратура" Height="600" Width="1000">
+    <Grid>
+        <TabControl>
+            <!-- Вкладка Врачи -->
+            <TabItem Header="Врачи">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button Content="Добавить врача" Click="AddDoctor_Click" Width="150" Margin="5" />
+                        <Button Content="Удалить врача" Click="DeleteDoctor_Click" Width="150" Margin="5" />
+                        <Button Content="Сохранить" Click="SaveDoctors_Click" Width="150" Margin="5" />
+                        <Button Content="Загрузить" Click="LoadDoctors_Click" Width="150" Margin="5" />
+                    </StackPanel>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Добавляем обработчик MouseDoubleClick -->
+                        <ListBox x:Name="DoctorsListBox" 
+                                 DisplayMemberPath="FullName" 
+                                 Margin="5" 
+                                 Grid.Column="0" 
+                                 SelectionChanged="DoctorsListBox_SelectionChanged"
+                                 MouseDoubleClick="DoctorsListBox_MouseDoubleClick" />
+                        <!-- Обработчик указан здесь -->
+
+                        <ListBox x:Name="SchedulesListBox" 
+                                 DisplayMemberPath="DayOfWeek" 
+                                 Margin="5" 
+                                 Grid.Column="1" 
+                                 SelectionChanged="SchedulesListBox_SelectionChanged" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Пациенты -->
+            <TabItem Header="Пациенты">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button Content="Добавить пациента" Click="AddPatient_Click" Width="150" Margin="5" />
+                        <Button Content="Удалить пациента" Click="DeletePatient_Click" Width="150" Margin="5" />
+                        <Button Content="Сохранить" Click="SavePatients_Click" Width="150" Margin="5" />
+                        <Button Content="Загрузить" Click="LoadPatients_Click" Width="150" Margin="5" />
+                    </StackPanel>
+
+                    <!-- Добавлен обработчик MouseDoubleClick -->
+                    <ListBox x:Name="PatientsListBox" 
+                             Grid.Row="1" 
+                             DisplayMemberPath="FullName" 
+                             Margin="5" 
+                             MouseDoubleClick="PatientsListBox_MouseDoubleClick" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Приемы">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button Content="Добавить прием" Click="AddVisit_Click" Width="150" Margin="5"/>
+                        <Button Content="Удалить прием" Click="DeleteVisit_Click" Width="150" Margin="5"/>
+                        <Button Content="Сохранить" Click="SaveVisits_Click" Width="150" Margin="5"/>
+                        <Button Content="Загрузить" Click="LoadVisits_Click" Width="150" Margin="5"/>
+                    </StackPanel>
+
+                    <ListBox x:Name="VisitsListBox"
+                 Grid.Row="1"
+                 DisplayMemberPath="Date"
+                 Margin="5"
+                 MouseDoubleClick="VisitsListBox_MouseDoubleClick"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
+ 
